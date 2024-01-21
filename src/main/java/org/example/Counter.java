@@ -6,26 +6,26 @@ public class Counter {
     public static void main(String[] args) {
         Scanner terminal = new Scanner(System.in);
         System.out.println("Enter the first parameter");
-        int parametroUm = terminal.nextInt();
+        int parameterOne = terminal.nextInt();
         System.out.println("Enter the second parameter");
-        int parametroDois = terminal.nextInt();
+        int parameterTwo = terminal.nextInt();
 
         try {
-            count(parametroUm, parametroDois);
+            count(parameterOne, parameterTwo);
 
-        }catch (ParametrosInvalidosException exception) {
-            System.out.println("The second parameter must be greater than the first");
+        }catch (InvalidParametersException e) {
+            System.out.println(e.getMessage());
         }
 
     }
-    static void count(int parametroUm, int parametroDois ) throws ParametrosInvalidosException {
-        if(parametroUm > parametroDois) {
-            throw new ParametrosInvalidosException();
+    static void count(int parameterOne, int parameterTwo ) {
+        if(parameterOne > parameterTwo) {
+            throw new InvalidParametersException("The second parameter must be greater than the first");
         }
 
-        int contagem = parametroDois - parametroUm;
+        int counting = parameterTwo - parameterOne;
 
-        for (int i = 1; i <= contagem; i++) {
+        for (int i = 1; i <= counting; i++) {
             System.out.println("Printing the number " + i);
         }
     }
